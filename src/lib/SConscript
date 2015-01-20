@@ -1,0 +1,13 @@
+Import('qtEnv')
+env = qtEnv.Clone()
+
+if 'qt4' in qtEnv['TOOLS']:
+    env.EnableQt4Modules(['QtGui'])
+if 'qt5' in qtEnv['TOOLS']:
+    env.EnableQt5Modules(['QtWidgets'])
+
+env.Append(CPPPATH = ['#src/lib','#gen/lib'])
+
+env.Library('sim', SConscript('sim/SConscript'))
+env.Library('springs', SConscript('springs/SConscript'))
+
