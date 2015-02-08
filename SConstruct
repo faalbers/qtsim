@@ -1,9 +1,7 @@
 import os
 
 #--- QT VERSION ---
-#qtver = ['qt4', 'QT4DIR', '/home/frank/QtSDK/Desktop/Qt/474/gcc']
-qtver = ['qt4', 'QT4DIR', '/pixar/d2/sets/tools-base-02']
-#qtver = ['qt5', 'QT5DIR', '/home/frank/Qt5.0.2/5.0.2/gcc_64']
+qtver = ['qt5', 'QT5DIR', '/home/frank/Qt5.4.0/5.4/gcc_64']
 
 # Create base environment
 baseEnv = Environment()
@@ -20,6 +18,10 @@ qtEnv[qtver[1]] = qtver[2]
 qtEnv.Tool(qtver[0])
 
 #...further customization of qt env
+qtEnv.Append( CPPFLAGS = [
+    '-fPIC'
+    ,'-std=c++0x'
+    ])
 
 # Export environments
 Export('baseEnv qtEnv')

@@ -1,12 +1,8 @@
 Import('qtEnv')
 env = qtEnv.Clone()
 
-if 'qt4' in qtEnv['TOOLS']:
-    env.EnableQt4Modules(['QtGui'])
-    env.Uic4(Glob('*.ui'))
-if 'qt5' in qtEnv['TOOLS']:
-    env.EnableQt5Modules(['QtWidgets'])
-    env.Uic5(Glob('*.ui'))
+env.EnableQt5Modules(['QtWidgets'])
+env.Uic5(Glob('*.ui'))
 
 env.Append(CPPPATH = ['#src/lib','#gen/lib'])
     
